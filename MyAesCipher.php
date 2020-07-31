@@ -5,7 +5,7 @@
  *
  * Encode/Decode text by password using AES-128-CBC algorithm
  */
-class MyAesCipher
+class AesCipher
 {
     const CIPHER = 'AES-128-CBC';
     const INIT_VECTOR_LENGTH = 16;
@@ -23,7 +23,7 @@ class MyAesCipher
     {
       try {
         // $result = encrypt($keyStr, $keyStr, utf8_encode($enStr));
-        $ivBytes = md5($keyStr);
+        $ivBytes = substr(md5($keyStr), 0, static::INIT_VECTOR_LENGTH);
         $keyBytes = hash('sha256', $keyStr);
         $enBytes = utf8_encode($enStr);        
         return static::encrypt($ivBytes, $keyBytes, $enBytes);
@@ -62,7 +62,7 @@ class MyAesCipher
     {
         try {
             $deBytes = base64_decode(utf8_decode($deStr));
-            $ivBytes = md5($keyStr);
+            $ivBytes = substr(md5($keyStr), 0, static::INIT_VECTOR_LENGTH);
             $keyBytes = hash('sha256', $keyStr);
             return static::decrypt($ivBytes, $keyBytes, $deBytes);
         } catch (\Exception $e) {
