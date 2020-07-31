@@ -5,7 +5,7 @@ import javax.crypto.spec.*;
 import java.security.spec.AlgorithmParameterSpec;
 import java.lang.Exception;
 
-public class MyClass {
+public class MyAesCipher{
 	static void myMethod() {
 		//		encryptStrAndToBase64("26kozQaKwRuNJ24t", "result");
 		try {

@@ -5,7 +5,7 @@
  *
  * Encode/Decode text by password using AES-128-CBC algorithm
  */
-class AesCipher
+class MyAesCipher
 {
     const CIPHER = 'AES-128-CBC';
     const INIT_VECTOR_LENGTH = 16;
